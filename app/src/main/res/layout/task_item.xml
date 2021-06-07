@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="task"
+            type="com.example.recruitmentapp.ui.recruitment.list.model.Task" />
+
+        <variable
+            name="viewmodel"
+            type="com.example.recruitmentapp.ui.recruitment.list.RecruitmentListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> viewmodel.openTaskDetails(task)}"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/large_space">
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/shape_stroke_oval"
+            android:padding="1dp"
+            app:error="@{@drawable/ic_person_placeholder}"
+            app:layout_constraintBottom_toBottomOf="@+id/title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            app:loadOvalUrl="@{task.imageUrl}"
+            app:placeholder="@{@drawable/ic_person_placeholder}"
+            tools:src="@drawable/ic_person_placeholder" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/PrimaryBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space"
+            android:layout_marginEnd="@dimen/space"
+            android:text="@{task.title}"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintStart_toEndOf="@+id/logoImageView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Test title" />
+
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/SecondaryBold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:date="@{task.modificationDate}"
+            app:layout_constraintBottom_toBottomOf="@+id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title"
+            tools:text="12.12.2021" />
+
+        <TextView
+            android:id="@+id/textView3"
+            style="@style/SecondaryMedium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space"
+            android:text="@{task.description}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/title"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="Tenderloin pork ribeye ball tip andouille venison, sirloin porchetta chuck spare ribs pork chop cow frankfurter salami picanha.  Bacon swine meatball pig, biltong capicola frankfurter pork.  Biltong alcatra pastrami bacon beef ribs, cow frankfurter ground round.  Rump kielbasa cupim, drumstick spare ribs turkey pig prosciutto pork loin cow frankfurter ball tip capicola beef tenderloin. Cupim kielbasa shankle, pork chop tail alcatra ribeye pig.  Boudin drumstick ground round tongue, venison tri-tip hamburger pork loin burgdoggen.  Fatback pastrami beef ribs, kielbasa burgdoggen chuck short loin tri-tip ham salami ham hock landjaeger biltong bacon.  Bacon ribeye chislic corned beef.  Turducken meatloaf turkey rump, biltong prosciutto tail sirloin fatback tenderloin filet mignon frankfurter." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

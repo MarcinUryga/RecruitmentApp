@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RecruitmentApp</string>
+    <string name="fragment_tasks_title">Tasks</string>
+    <string name="fragment_details_title">Details</string>
+    <string name="no_url_to_load">No url link to load data</string>
+    <string name="no_internet_connection">Offline mode</string>
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tablet_navigation"
+    app:startDestination="@id/detailsFragment">
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.recruitmentapp.ui.recruitment.details.DetailsFragment"
+        android:label="@string/fragment_details_title"
+        tools:layout="@layout/fragment_details">
+
+        <argument
+            android:name="title"
+            android:defaultValue="Tasks"
+            app:argType="string" />
+        <argument
+            android:name="url"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+
+    <action
+        android:id="@+id/startDetailsFragment"
+        app:destination="@id/detailsFragment" />
+</navigation>
