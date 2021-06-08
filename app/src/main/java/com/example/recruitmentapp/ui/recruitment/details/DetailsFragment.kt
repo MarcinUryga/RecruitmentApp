@@ -16,7 +16,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
-    private lateinit var viewDataBinding: FragmentDetailsBinding
+    private var _viewDataBinding: FragmentDetailsBinding? = null
+    private val viewDataBinding get() = _viewDataBinding!!
     private val arguments: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -24,7 +25,7 @@ class DetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewDataBinding = FragmentDetailsBinding.inflate(inflater, container, false)
+        _viewDataBinding = FragmentDetailsBinding.inflate(inflater, container, false)
         arguments.title.let {
             (requireActivity() as MainActivity).supportActionBar?.title = it
         }
@@ -44,6 +45,11 @@ class DetailsFragment : Fragment() {
             viewDataBinding.webView.loadUrl(it)
             Log.d(TAG, "setupWebView: $it")
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _viewDataBinding = null
     }
 
     inner class CustomWebViewClient : WebViewClient() {

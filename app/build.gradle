@@ -98,6 +98,9 @@ dependencies {
 //    Joda Time
     implementation "joda-time:joda-time:$joda_time_version"
 
+//    LeakCanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
+
 //    JUnit
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

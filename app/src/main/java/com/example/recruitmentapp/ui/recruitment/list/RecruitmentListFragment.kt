@@ -20,7 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RecruitmentListFragment : Fragment() {
     private val viewModel by viewModels<RecruitmentListViewModel>()
-    private lateinit var viewDataBinding: FragmentTasksBinding
+    private var _viewDataBinding: FragmentTasksBinding? = null
+    private val viewDataBinding get() = _viewDataBinding!!
     private lateinit var tasksAdapter: TasksAdapter
 
     override fun onCreateView(
@@ -28,7 +29,7 @@ class RecruitmentListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewDataBinding = FragmentTasksBinding.inflate(inflater, container, false)
+        _viewDataBinding = FragmentTasksBinding.inflate(inflater, container, false)
         return viewDataBinding.root
     }
 
@@ -84,6 +85,11 @@ class RecruitmentListFragment : Fragment() {
             .build()
             .toBundle()
         fragment.findNavController().navigate(R.id.startDetailsFragment, args)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _viewDataBinding = null
     }
 
     companion object {
