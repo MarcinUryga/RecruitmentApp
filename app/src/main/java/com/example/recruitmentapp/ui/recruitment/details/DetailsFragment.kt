@@ -40,11 +40,9 @@ class DetailsFragment : Fragment() {
             settings.domStorageEnabled = true
             webViewClient = CustomWebViewClient()
         }
-        arguments.url?.let {
+        arguments.url.let {
             viewDataBinding.webView.loadUrl(it)
             Log.d(TAG, "setupWebView: $it")
-        } ?: run {
-            viewDataBinding.noUrlTextView.visibility = View.VISIBLE
         }
     }
 

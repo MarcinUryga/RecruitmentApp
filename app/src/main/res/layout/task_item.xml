@@ -18,9 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/selectableItemBackground"
-        android:onClick="@{() -> viewmodel.openTaskDetails(task)}"
         android:clickable="true"
         android:focusable="true"
+        android:onClick="@{() -> viewmodel.openTaskDetails(task)}"
         android:padding="@dimen/large_space">
 
         <ImageView
@@ -28,8 +28,6 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:background="@drawable/shape_stroke_oval"
-            android:padding="1dp"
             app:error="@{@drawable/ic_person_placeholder}"
             app:layout_constraintBottom_toBottomOf="@+id/title"
             app:layout_constraintStart_toStartOf="parent"

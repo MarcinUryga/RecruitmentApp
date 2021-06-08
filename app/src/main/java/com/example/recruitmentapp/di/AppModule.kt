@@ -24,16 +24,3 @@ object AppModule {
         ).build()
     }
 }
-
-//@Module
-//@InstallIn(SingletonComponent::class)
-//class ProductionModule {
-//
-//    @Singleton
-//    @Provides
-//    fun provideAppDatabase(@ApplicationContext appContext: Context): AppDatabase {
-//        return Room
-//            .databaseBuilder(appContext, AppDatabase::class.java, AppDatabase.DB_NAME)
-//            .build()
-//    }
-//}

@@ -13,7 +13,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(private val networkConnection: NetworkConnection) :
     ViewModel() {
 
-    private val _isNetworkConnected = MutableLiveData(true)
+    private val _isNetworkConnected = MutableLiveData(networkConnection.isConnected())
     val isNetworkConnected: LiveData<Boolean> = _isNetworkConnected
 
     init {
@@ -24,21 +24,31 @@ class MainViewModel @Inject constructor(private val networkConnection: NetworkCo
         val connectivityManager = networkConnection.connectivityManager
         connectivityManager.registerNetworkCallback(
             networkConnection.networkRequest,
-            object : ConnectivityManager.NetworkCallback() {
-                override fun onAvailable(network: Network) {
-                    super.onAvailable(network)
-                    _isNetworkConnected.postValue(true)
-                }
+            getNetworkCallback()
+        )
+    }
 
-                override fun onUnavailable() {
-                    super.onUnavailable()
+    private fun getNetworkCallback(): ConnectivityManager.NetworkCallback {
+        var numConnected = 0
+        return object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+                numConnected++
+                _isNetworkConnected.postValue(true)
+            }
+
+            override fun onUnavailable() {
+                super.onUnavailable()
+                _isNetworkConnected.postValue(false)
+            }
+
+            override fun onLost(network: Network) {
+                super.onLost(network)
+                numConnected = (numConnected - 1).coerceAtLeast(0)
+                if (numConnected == 0) {
                     _isNetworkConnected.postValue(false)
                 }
-
-                override fun onLost(network: Network) {
-                    super.onLost(network)
-                    _isNetworkConnected.postValue(false)
-                }
-            })
+            }
+        }
     }
 }

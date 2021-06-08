@@ -6,9 +6,7 @@ import org.joda.time.format.DateTimeFormat
 import java.util.*
 
 object DateTimeFormatters {
-    private val locale: Locale = Locale.US
     private const val FULL_DATE_FORMAT = "yyyy-MM-dd"
-
 
     private val defaultFormatter by lazy {
         DateTimeFormat.forPattern(FULL_DATE_FORMAT).localize()

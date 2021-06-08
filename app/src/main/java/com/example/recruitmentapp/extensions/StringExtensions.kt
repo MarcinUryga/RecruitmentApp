@@ -13,7 +13,6 @@ fun String.findHtmlLinks(): List<String> {
         matchEnd = urlMatcher.end()
         val url = this.substring(matchStart, matchEnd)
         urlList.add(url)
-        this.replace(url, "")
     }
     return urlList
 }

@@ -28,7 +28,7 @@ internal object NetworkModule {
     @Provides
     @Singleton
     fun provideLoggingInterceptor(): Interceptor {
-        val level = if (BuildConfig.DEBUG) Level.BODY else Level.NONE;
+        val level = if (BuildConfig.DEBUG) Level.BODY else Level.NONE
         return HttpLoggingInterceptor()
             .setLevel(level)
     }
@@ -56,7 +56,6 @@ internal object NetworkModule {
         callAdapters: @JvmSuppressWildcards Set<CallAdapter.Factory>
     ): RecruitmentTaskApiService {
         val okHttpClient = createHttpClient(interceptors)
-//        return RemoteRecruitmentTaskDemo()
         return createRetrofit(
             ApiConstants.BASE_URL,
             okHttpClient,
