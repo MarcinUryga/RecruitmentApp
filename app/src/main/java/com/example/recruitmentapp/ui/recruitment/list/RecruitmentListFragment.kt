@@ -89,6 +89,7 @@ class RecruitmentListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        viewDataBinding.tasksView.recyclerView.adapter = null
         _viewDataBinding = null
     }
 
